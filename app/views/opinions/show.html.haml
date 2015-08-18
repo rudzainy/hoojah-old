@@ -1,0 +1,45 @@
+#opinion_show.row
+	.col-md-8.col-md-offset-2
+		.panel.panel-default
+			.panel-heading.opinion_image
+				#image-border
+					= image_tag @opinion.image.url
+				%h2.text-center= @opinion.title
+			.panel-body
+				.row
+					.col-md-6
+						= link_to @opinion.option1, vote_option1_opinion_path(@opinion), method: :get, class: "btn btn-primary btn-lg btn-block"
+					.col-md-6
+						= link_to @opinion.option2, vote_option2_opinion_path(@opinion), method: :get, class: "btn btn-success btn-lg btn-block"
+				.row
+					.col-md-12
+						.pull-left
+							%h4.color-primary
+								= pluralize(@opinion.get_upvotes.size, "vote")
+						.pull-right
+							%h4.color-success
+								= pluralize(@opinion.get_downvotes.size, "vote")
+			.panel-footer
+				.row
+					.col-md-6
+						%p.user
+						posted by
+						= @opinion.user.name
+					- if user_signed_in?					
+						.col-md-6
+							.btn-group.pull-right
+								= link_to "Edit", edit_opinion_path(@opinion), class: "btn btn-default" # for admin only
+								= link_to "Delete", opinion_path(@opinion), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+			.panel-body
+				#comments
+					%h2.comment_count= pluralize(@opinion.comments.count, "hoojah")
+					- @comments.each do |comment|
+						.comment
+							.row
+								.col-md-3
+									%h4.username= comment.user.name
+								.col-md-9
+									%p.content= comment.content
+							%hr/
+
+					= render 'comments/form'

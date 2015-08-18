@@ -1,0 +1,25 @@
+#opinions.transition-enabled
+	- @opinion.each do |opinion|
+		.box.panel.panel-default
+			#image-border
+				=link_to (image_tag opinion.image.url), opinion
+			.panel-body
+				%h2= link_to opinion.title, opinion
+				.row
+					.col-md-6
+						= link_to opinion.option1, vote_option1_opinion_path(opinion), method: :get, class: "btn btn-primary btn-lg btn-block"
+					.col-md-6
+						= link_to opinion.option2, vote_option2_opinion_path(opinion), method: :get, class: "btn btn-success btn-lg btn-block"
+				.row
+					.col-md-12
+						.pull-left
+							%h4.color-primary
+								= pluralize(opinion.get_upvotes.size, "vote")
+						.pull-right
+							%h4.color-success
+								= pluralize(opinion.get_downvotes.size, "vote")
+				%p.user
+				= opinion.comments.count
+				hoojah
+			.panel-footer
+				
