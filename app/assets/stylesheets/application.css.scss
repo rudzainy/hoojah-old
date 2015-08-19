@@ -31,17 +31,28 @@ nav {
 	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
 	.navbar-brand {
 		a {
-			color: #337ab7;
+			color: #433867;
+			font-size: 16pt;
 			font-weight: bold;
+			text-decoration: none;
+		  -o-transition:color .2s ease-out, background 2s ease-in;
+		  -ms-transition:color .2s ease-out, background 2s ease-in;
+		  -moz-transition:color .2s ease-out, background 2s ease-in;
+		  -webkit-transition:color .2s ease-out, background 2s ease-in;
+		  transition:color .2s ease-out, background 2s ease-in;
+		
 			&:hover {
 				text-decoration: none;
 			}
+		}
+		a:hover { 
+			color: #5cb85c;
 		}
 	}
 }
 
 #opinions {
-  margin: 0 auto;
+  margin: 70px auto 0 auto;
   width: 100%;
   .box {
 	  margin: 10px;
