@@ -13,10 +13,10 @@
 				.row
 					.col-md-12
 						.pull-left
-							%h4.color-primary
+							%h5.color-primary
 								= pluralize(opinion.get_upvotes.size, "vote")
 						.pull-right
-							%h4.color-success
+							%h5.color-success
 								= pluralize(opinion.get_downvotes.size, "vote")
 				%p.user
 				= opinion.comments.count
